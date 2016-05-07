@@ -1,1 +1,1 @@
-# magallanes
+# magallanes-server
