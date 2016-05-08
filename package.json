@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Inevio/magallanes-server#readme",
   "dependencies": {
+    "mysql": "^2.10.2",
     "vertigo": "0.0.6"
   }
 }
