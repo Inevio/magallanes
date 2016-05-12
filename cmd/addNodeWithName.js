@@ -2,7 +2,7 @@
 
 module.exports = function( ip, name, callback ){
 
-  console.log( new Date() + ' | monitorUpdate => ' + ip + ' - ' + name );
+  console.log( new Date() + ' | addNodeWithName => ' + ip + ' - ' + name );
 
   mysql.query( 'INSERT INTO nodes SET ip = ?, name = ?', [ ip, name ], function( error, result ){
 

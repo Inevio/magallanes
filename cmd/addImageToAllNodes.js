@@ -4,25 +4,25 @@ module.exports = function ( ip, image, callback ) {
 
     mysql.query('SELECT ip FROM nodes', [ ip ], function ( err, rows ) {
 
-        if ( err ) return callback(err);
+        if ( err ){
+            return callback(err);
+        }
 
-        if ( !rows ) {
-            callback('There are no machines running.');
-        } else {
+        if ( !rows.length ) {
+            return callback('There are no machines running.');
+        }
 
-            async.each( rows, function ( machine, callback ) {
+        async.map( rows, function ( machine, callback ) {
 
-                var client =  vertigo.createClient({ host: machine.ip, port: 21042 });
+            var client =  vertigo.createClient({ host: machine.ip, port: 21042 });
 
-                client.request('monitorAddImage', image, function ( err, res ) {
-                    callback( err, res );
-                });
-
-            }, function ( err ) {
-                callback(err);
+            client.request('monitorAddImage', image, function ( err, res ) {
+                callback( err, res );
             });
 
-        }
+        }, function ( err, res ) {
+            callback(err, res);
+        });
 
     });
 
