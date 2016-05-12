@@ -7,7 +7,7 @@ require('./lib/vertigo');
 require('./lib/async');
 
 // Create server
-var server = vertigo.createServer( 21042 );
+var server = vertigo.createServer( 21041 );
 
 // Listen petitions
 server.on( 'nodes', require('./cmd/nodes') ); //✅
