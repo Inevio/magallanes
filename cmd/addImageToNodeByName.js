@@ -1,14 +1,21 @@
 'use strict';
 
-module.exports = function( info, callback ){
+module.exports = function( name, image, callback ){
 
-    var client = vertigo.createClient({ host: 'magallanes-monitor', port: 21042 });
+    mysql.query('SELECT * FROM nodes WHERE name=? LIMIT 1', [name], function ( err, rows ) {
 
-    client.request('monitorAddImage', 'registry.inevio.com:5000/magallanes-server', function ( err, res ) {
-        console.log(err);
-        console.log(res[0]);
-        console.log(res[1]);
-        console.log(res[2]);
+            if (err) return callback(err);
+
+            if ( !rows ) {
+                callback('The machine named ' + name + ' does not exist');
+            } else {
+                var client = vertigo.createClient({ host: rows[0].ip, port: 21042 });
+
+                client.request('monitorAddImage', image, function ( err, res ) {
+                    callback( err, res );
+                });
+            }
+
     });
 
 };
