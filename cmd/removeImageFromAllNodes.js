@@ -1,28 +1,26 @@
 'use strict';
 
 // Modules
-var request = require('request');
+module.exports = function( image, callback ) {
 
-module.exports = function( name, image, callback ) {
+  mysql.query('SELECT * FROM nodes', function ( err, rows ) {
 
-    mysql.query('SELECT * FROM nodes', [ name ], function ( err, rows ) {
+    if ( err ) {
+      return callback(err);
+    }
 
-        if ( err ) {
-          return callback(err);
-        }
+    if ( !rows.length ) {
+      return callback('There are not machines');
+    }
 
-        if ( !rows.length ) {
-            return callback('The machine named ' + name + ' does not exist');
-        } else {
-          async.forEach(rows, function ( item, callback ) {
+    async.map(rows, function ( item, callback ) {
 
-            vertigo.createClient({ host: item.ip, port: 21041 }).request('monitorRemoveImage', image, callback);
+      var client = vertigo.createClient({ host: item.ip, port: 21042 });
 
-            client.request('monitorRemoveImage', image, callback);
+      client.request('monitorRemoveImage', image, callback);
 
-          }, callback);
-        }
+    }, callback);
 
-    });
+  });
 
 };

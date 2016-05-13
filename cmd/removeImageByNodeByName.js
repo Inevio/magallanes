@@ -1,8 +1,6 @@
 'use strict';
 
 // Modules
-var request = require('request');
-
 module.exports = function( name, image, callback ) {
 
     mysql.query('SELECT * FROM nodes WHERE name = ? LIMIT 1', [ name ], function ( err, rows ) {
@@ -12,12 +10,12 @@ module.exports = function( name, image, callback ) {
         }
 
         if ( !rows.length ) {
-            return callback('The machine named ' + name + ' does not exist');
-        } else {
-            vertigo.createClient({ host: ip, port: 21041 }).request('monitorRemoveImage', image, callback);
-
-            client.request('monitorRemoveImage', image, callback);
+          return callback('The machine named ' + name + ' does not exist');
         }
+
+        var client = vertigo.createClient({ host: rows[ 0 ].ip, port: 21042 });
+
+        client.request('monitorRemoveImage', image, callback);
 
     });
 
