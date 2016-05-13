@@ -14,7 +14,7 @@ module.exports = function( callback ){
 
         machine.containers = [];
         delete machine.lastPing;
-        return callback( null, res );
+        return callback( null, machine );
 
       }
 
@@ -28,7 +28,7 @@ module.exports = function( callback ){
 
         machine.containers = res;
         delete machine.lastPing;
-        callback( null, res );
+        callback( null, machine );
 
       });
 
