@@ -2,7 +2,7 @@
 
 module.exports = function( name, image, callback ){
 
-    mysql.query('SELECT * FROM nodes WHERE name=? LIMIT 1', [name], function ( err, rows ) {
+    mysql.query('SELECT * FROM nodes WHERE name = ? LIMIT 1', [name], function ( err, rows ) {
 
         if (err){
             return callback(err);

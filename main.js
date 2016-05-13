@@ -18,11 +18,11 @@ server.on( 'addNodeWithName', require('./cmd/addNodeWithName') ); //✅
 server.on( 'removeNode', require('./cmd/removeNode') ); //✅
 server.on( 'removeNodeByName', require('./cmd/removeNodeByName') ); //✅
 server.on( 'addImageToAllNodes', require('./cmd/addImageToAllNodes') ); //✅
-server.on( 'removeImageFromAllNodes', require('./cmd/removeImageFromAllNodes') );
+server.on( 'removeImageFromAllNodes', require('./cmd/removeImageFromAllNodes') ); //✅
 server.on( 'addImageToNodeByIP', require('./cmd/addImageToNodeByIP') ); //✅
 server.on( 'addImageToNodeByName', require('./cmd/addImageToNodeByName') ); //✅
-server.on( 'removeImageByNodeByIP', require('./cmd/removeImageByNodeByIP') );
-server.on( 'removeImageByNodeByName', require('./cmd/removeImageByNodeByName') );
+server.on( 'removeImageByNodeByIP', require('./cmd/removeImageByNodeByIP') ); //✅
+server.on( 'removeImageByNodeByName', require('./cmd/removeImageByNodeByName') ); //✅
 server.on( 'updateAllImagesOfAllNodes', require('./cmd/updateAllImagesOfAllNodes') );
 server.on( 'updateImageOfAllNodes', require('./cmd/updateImageOfAllNodes') );
 server.on( 'updateImageOfNode', require('./cmd/updateImageOfNode') );
