@@ -6,15 +6,34 @@ module.exports = function( callback ){
 
   mysql.query('SELECT name, ip, lastPing FROM nodes WHERE 1', function( error, rows ){
 
-    rows.forEach( function( item ){
+    async.map( rows, function( machine,callback ){
 
-      item.status = item.lastPing > ( Date.now() - 15000 ) ? 'ON' : 'OFF';
+      machine.status = machine.lastPing > ( Date.now() - 15000 ) ? 'ON' : 'OFF';
 
-      delete item.lastPing;
+      if( machine.status === 'OFF' ){
 
-    });
+        machine.containers = [];
+        delete machine.lastPing;
+        return callback( null, res );
 
-    callback( null, rows );
-  })
+      }
+
+      var client = vertigo.createClient({ host: machine.ip, port: 21042 });
+
+      client.request('monitorNode', function ( err, res ) {
+
+        if( err ){
+          return callback( err );
+        }
+
+        machine.containers = res;
+        delete machine.lastPing;
+        callback( null, res );
+
+      });
+
+    }, callback );
+
+  });
 
 };
