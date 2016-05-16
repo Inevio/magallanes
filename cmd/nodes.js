@@ -6,6 +6,14 @@ module.exports = function( callback ){
 
   mysql.query('SELECT name, ip, lastPing FROM nodes WHERE 1', function( error, rows ){
 
+    if ( error ){
+      return callback(error);
+    }
+
+    if ( !rows ) {
+      return callback('There are not machines');
+    }
+
     async.map( rows, function( machine,callback ){
 
       machine.status = machine.lastPing > ( Date.now() - 15000 ) ? 'ON' : 'OFF';
