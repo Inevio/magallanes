@@ -23,7 +23,7 @@ server.on( 'addImageToNodeByIP', require('./cmd/addImageToNodeByIP') ); //✅
 server.on( 'addImageToNodeByName', require('./cmd/addImageToNodeByName') ); //✅
 server.on( 'removeImageByNodeByIP', require('./cmd/removeImageByNodeByIP') ); //✅
 server.on( 'removeImageByNodeByName', require('./cmd/removeImageByNodeByName') ); //✅
-server.on( 'updateAllImagesOfAllNodes', require('./cmd/updateAllImagesOfAllNodes') //✅
+server.on( 'updateAllImagesOfAllNodes', require('./cmd/updateAllImagesOfAllNodes') );//✅
 server.on( 'updateImageOfAllNodes', require('./cmd/updateImageOfAllNodes') ); //✅
 server.on( 'updateImageOfNode', require('./cmd/updateImageOfNode') ); //✅
 server.on( 'scaleImageInAllNode', require('./cmd/scaleImageInAllNode') );
