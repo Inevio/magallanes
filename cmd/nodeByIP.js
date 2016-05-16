@@ -8,7 +8,7 @@ module.exports = function( ip, callback ){
             return callback(err);
         }
 
-        if ( !rows ) {
+        if ( !rows.length ) {
             return callback('The machine with the IP ' + ip + ' does not exist');
         }
 

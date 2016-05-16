@@ -10,7 +10,7 @@ module.exports = function( callback ){
       return callback(error);
     }
 
-    if ( !rows ) {
+    if ( !rows.length ) {
       return callback('There are not machines');
     }
 

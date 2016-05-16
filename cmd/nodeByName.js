@@ -8,7 +8,7 @@ module.exports = function( name, callback ){
             return callback(err);
         }
 
-        if ( !rows ) {
+        if ( !rows.length ) {
             return callback('The machine named ' + name + ' does not exist');
         }
 
