@@ -23,9 +23,9 @@ server.on( 'addImageToNodeByIP', require('./cmd/addImageToNodeByIP') ); //✅
 server.on( 'addImageToNodeByName', require('./cmd/addImageToNodeByName') ); //✅
 server.on( 'removeImageByNodeByIP', require('./cmd/removeImageByNodeByIP') ); //✅
 server.on( 'removeImageByNodeByName', require('./cmd/removeImageByNodeByName') ); //✅
-server.on( 'updateAllImagesOfAllNodes', require('./cmd/updateAllImagesOfAllNodes') );
-server.on( 'updateImageOfAllNodes', require('./cmd/updateImageOfAllNodes') );
-server.on( 'updateImageOfNode', require('./cmd/updateImageOfNode') );
+server.on( 'updateAllImagesOfAllNodes', require('./cmd/updateAllImagesOfAllNodes') //✅
+server.on( 'updateImageOfAllNodes', require('./cmd/updateImageOfAllNodes') ); //✅
+server.on( 'updateImageOfNode', require('./cmd/updateImageOfNode') ); //✅
 server.on( 'scaleImageInAllNode', require('./cmd/scaleImageInAllNode') );
 server.on( 'scaleImageInNodeByIP', require('./cmd/scaleImageInNodeByIP') );
 server.on( 'scaleImageInNodeByName', require('./cmd/scaleImageInNodeByName') );
