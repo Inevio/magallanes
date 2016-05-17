@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = function ( ip, image, callback ) {
+module.exports = function ( image, callback ) {
 
-    mysql.query('SELECT ip FROM nodes', [ ip ], function ( err, rows ) {
+    mysql.query('SELECT * FROM nodes', function ( err, rows ) {
 
         if ( err ){
             return callback(err);
