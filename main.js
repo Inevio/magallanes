@@ -26,8 +26,8 @@ server.on( 'removeImageByNodeByName', require('./cmd/removeImageByNodeByName') )
 server.on( 'updateAllImagesOfAllNodes', require('./cmd/updateAllImagesOfAllNodes') );//✅
 server.on( 'updateImageOfAllNodes', require('./cmd/updateImageOfAllNodes') ); //✅
 server.on( 'updateImageOfNode', require('./cmd/updateImageOfNode') ); //✅
-server.on( 'scaleImageInAllNode', require('./cmd/scaleImageInAllNode') );
-server.on( 'scaleImageInNodeByIP', require('./cmd/scaleImageInNodeByIP') );
-server.on( 'scaleImageInNodeByName', require('./cmd/scaleImageInNodeByName') );
+server.on( 'scaleImageInAllNodes', require('./cmd/scaleImageInAllNodes') ); //✅
+server.on( 'scaleImageInNodeByIP', require('./cmd/scaleImageInNodeByIP') ); //✅
+server.on( 'scaleImageInNodeByName', require('./cmd/scaleImageInNodeByName') ); //✅
 server.on( 'registerService', require('./cmd/registerService') );
 server.on( 'monitorUpdate', require('./cmd/monitorUpdate') ); //✅

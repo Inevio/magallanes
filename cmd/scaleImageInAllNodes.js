@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function( image, callback ){
+module.exports = function( image, instances, callback ){
 
   mysql.query('SELECT * FROM nodes', function ( err, rows ) {
 
@@ -16,7 +16,7 @@ module.exports = function( image, callback ){
 
         var client = vertigo.createClient({ host : machine.ip, port : 21042 });
 
-        client.request('monitorScaleImage', image, function ( err, res ) {
+        client.request('monitorScaleImage', image, instances, function ( err, res ) {
           callback( err, res );
         });
 

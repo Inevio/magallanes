@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function( ip, image, callback ){
+module.exports = function( ip, image, instances, callback ){
 
   mysql.query('SELECT * FROM nodes WHERE ip = ? LIMIT 1', [ ip ], function ( err, rows ) {
 
@@ -14,7 +14,7 @@ module.exports = function( ip, image, callback ){
 
       var client = vertigo.createClient({ host : ip, port : 21042 });
 
-      client.request('monitorScaleImage', image, function ( err, res ) {
+      client.request('monitorScaleImage', image, instances, function ( err, res ) {
         callback( err, res );
       });
 
