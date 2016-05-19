@@ -29,5 +29,11 @@ server.on( 'updateImageOfNode', require('./cmd/updateImageOfNode') ); //✅
 server.on( 'scaleImageInAllNodes', require('./cmd/scaleImageInAllNodes') ); //✅
 server.on( 'scaleImageInNodeByIP', require('./cmd/scaleImageInNodeByIP') ); //✅
 server.on( 'scaleImageInNodeByName', require('./cmd/scaleImageInNodeByName') ); //✅
-server.on( 'registerService', require('./cmd/registerService') );
 server.on( 'monitorUpdate', require('./cmd/monitorUpdate') ); //✅
+
+// Service petitions
+server.on( 'registerService', require('./cmd/registerService') );
+server.on( 'returnService', require('./cmd/returnService') );
+server.on( 'updateService', require('./cmd/updateService') );
+server.on( 'suspendService', require('./cmd/suspendService') );
+server.on( 'killService', require('./cmd/killService') );
