@@ -34,6 +34,5 @@ server.on( 'monitorUpdate', require('./cmd/monitorUpdate') ); //✅
 // Service petitions
 server.on( 'registerService', require('./cmd/registerService') );
 server.on( 'returnService', require('./cmd/returnService') );
-server.on( 'updateService', require('./cmd/updateService') );
 server.on( 'suspendService', require('./cmd/suspendService') );
 server.on( 'killService', require('./cmd/killService') );
